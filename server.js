@@ -9,9 +9,7 @@ app.get('/movies', (req, res) => {
   if (!targetURL) {
     res.status(500).send({ error: 'There is no Target-URL header in the request' })
   }
-  axios.get(targetURL, {
-    headers: { Authorization: req.header('Authorization') }
-  })
+  axios.get(targetURL)
     .then(({ data: movie }) => {
       const betterMovie = {
         title: movie.Title,
