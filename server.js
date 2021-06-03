@@ -78,7 +78,7 @@ app.get('*', (req, res) => {
     res.status(500).send({ error: 'There is no Target-URL header in the request' })
   }
   axios.get(targetURL, {
-    headers: { Authorization: req.header('Authorization') }
+    headers: { Authorization: req.header('Authorization') ? req.header('Authorization') : '' }
   })
     .then(response => {
       console.log(response)
